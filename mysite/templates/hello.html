@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head><link src="my.css" rel="stylesheet">
+	<body style="background-color:lightblue; ">Watch more cities:
+		<form method="post" action="/">
+		{% csrf_token %}
+			City: <input type="text" name="stuff"/><br/>
+			User: <input type="text" name="owner"/><br/>
+			<input type="submit">
+		</form>
+				<br>
+		<div>{{output}}</div>
+		<script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"></script>
+			<button>Test</button>
+		<script>
+			//Handle the state Finish after views is complete
+			var state = "{{state|safe}}"
+			if(state !== "")
+			{
+			alert("The state is" + state);
+			}
+				//Handle the saved data from django
+			var a = "{{output|safe}}"
+			var a = JSON.parse(a);
+			$("button").click(function(){
+				alert(a[0]);
+			});
+			
+		</script>
+	
+	</body>
+	</html>
+
+ <!--Implement response for statuses from views.py--!>
