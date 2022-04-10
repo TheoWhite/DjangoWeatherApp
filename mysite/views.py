@@ -1,7 +1,9 @@
 from django.views import View
 from django.shortcuts import render
 from mysite.models import MyThing, MyUser
-
+from django.core import serializers
+from django.http import JsonResponse
+import json
 """
 render Returns:
 						output: json db 
@@ -15,10 +17,8 @@ State table:
 
 class Hello(View):
 	def get(self, request):
-		own = MyUser.objects.get(data="tom")
-		ls = list(MyThing.objects.filter(owner=own))
-		print(ls)
-		dataList = list(MyThing.objects.all().values())
+		dataList = serializers.serialize("json",MyThing.objects.all())
+		#dataList = list(MyThing.objects.all().values())
 		
 		return render(request,"hello.html",{"output":dataList,"status":"-1"})
 	def post(self, request):
@@ -39,7 +39,13 @@ class Hello(View):
 				o = a[0]
 			myData = MyThing(owner=o,data=request.POST["stuff"])
 			myData.save()
-			dataList = list(MyThing.objects.all().values())
+			#dataList = list(MyThing.objects.all().values())
 		else: 
 			status = "1"
+		dataList = serializers.serialize("json",MyThing.objects.all())
 		return render(request,"hello.html",{"output":dataList,"status":status})
+
+class Item(View):
+	def get(self,request):
+		ret = MyThing.objects.all().values()
+		return JsonResponse(json.dumps(list(ret)),safe=False)

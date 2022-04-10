@@ -1,36 +1,28 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head><link src="my.css" rel="stylesheet">
-	<body style="background-color:lightblue; ">Watch more cities:
+	<body style="background-color:lightgray; ">
 		<form method="post" action="/">
 		{% csrf_token %}
-			City: <input type="text" name="stuff"/><br/>
-			User: <input type="text" name="owner"/><br/>
-			<input type="submit">
+			City: <input type="text" id="city" name="stuff"/><br/>
+			User: <input type="text" id="user" name="owner"/><br/>
+			<input type="submit" id="submit-button" disabled>
 		</form>
+		<p id="new-city-state"></p>
 				<br>
-		<div>{{output}}</div>
 		<script
       src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
       crossorigin="anonymous"></script>
-			<button>Test</button>
-		<script>
-			//Handle the state Finish after views is complete
-			var state = "{{state|safe}}"
-			if(state !== "")
-			{
-			alert("The state is" + state);
-			}
-				//Handle the saved data from django
-			var a = "{{output|safe}}"
-			var a = JSON.parse(a);
-			$("button").click(function(){
-				alert(a[0]);
-			});
-			
-		</script>
-	
+		<div id="result-table"></div>
+		<br>
+		<br>
+		<div id="error" style="background-color:black; width:200px;">
+			<p style="color:red;">Error</p>
+			<p style="color:red;" id="error-state"></p>
+		</div>
+		<script src="{% static 'js/script.js' %}"></script>
 	</body>
 	</html>
 
