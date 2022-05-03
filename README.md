@@ -1,43 +1,27 @@
-# Developing Django on Repl.it
+## Django Weather App
 
-- Fork this template to get started
-- Simply hit run to start the server
-- The server will autoreload as needed. You don't need to restart the server manually.
+This is a simple weather app that allows a user to keep track of weather data. The site contains a list of cities and user and the temperature of the city. 
 
-## Add your first view
+### Technologies
+- Django
+- AJAX
+- JQuery
+- HTML, CSS
 
-1. Create a file under `mysite` named `views.py` with the following contents:
+#### Features
+- Filtering
+- Temperature lookup
+- Error checking
 
-```
-from django.http import HttpResponse
+#### Filterings
+By default all cities and all users with be visible but once the user types a name in the user field the site will auto filter to that user.
+
+#### Temperature lookup
+This allows users to lookup one or more cities using one interface additionally, the page will auto update. 
+
+#### Error Checking
+If the user spells the city wrong the program will not allow submission until corrected.
 
 
-def index(request):
-    return HttpResponse("Hello, world.")
-```
 
-2. Add a url pattern under `mysite/urls.py`. It should look like this:
-
-```
-from django.contrib import admin
-from django.urls import path
-from . import views
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-]
-```
-
-## Shell
-
-Django utilizes the shell for managing your site. For this click on the `?` in the lower-right corner and click "Workspace shortcuts" from there you can open a new shell pane. 
-
-## Database
-
-By default this template utilizes the sqlite database engine. While this is fine for development it won't work with external users of your app as we don't persist changes to files when they happen outside the development environment. 
-
-We suggest bringing a database using an outside service. 
-
-See Django documentation on how to setup a database: https://docs.djangoproject.com/en/3.0/intro/tutorial02/
 
