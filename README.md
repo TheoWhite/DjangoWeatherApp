@@ -2,7 +2,7 @@
 
 This is a simple weather app that allows a user to keep track of weather data. The site contains a list of cities and user and the temperature of the city.
 
-![Image](examples/img2.jpg)
+![Image](examples/img2.png)
 
 
 ### Technologies
@@ -20,7 +20,7 @@ This is a simple weather app that allows a user to keep track of weather data. T
 By default all cities and all users with be visible but once the user types a name in the user field the site will auto filter to that user.
 
 #### Temperature lookup
-![Image](examples/img1.jpg)
+![Image](examples/img1.png)
 This allows users to lookup one or more cities using one interface additionally, the page will auto update.
 
 #### Error Checking
